@@ -6,7 +6,7 @@ from datetime import date
 
 @app.route('/',endpoint='home')
 def home():
-    tasks = Task.query.all()
+    tasks = Task.query.order_by(Task.date.asc()).all()
     return render_template('home.html',tasks=tasks)
 
 @app.route('/add',methods=['GET','POST'],endpoint='add')
