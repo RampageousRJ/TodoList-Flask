@@ -1,18 +1,25 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="container-fluid">
-  <form action="{{ url_for('edit', task_id=task_id) }}" method="post">
-    {{ form.hidden_tag() }}
-    <div class="row">
-      <h3>Edit Task</h3>
-      <div class="col">
-        {{ form.title(class="form-control") }}
-      </div>
-      <div class="col">
-        {{ form.submit(class="btn btn-primary") }}
-      </div>
+<div class="container">
+  <div class="row" style="padding:0 10%">
+    <div class="col-md-12">
+      <form action="{{ url_for('edit', task_id=task_id) }}" method="post">
+        {{ form.hidden_tag() }}
+        <div class="card" style='border:2px solid black; text-align:center'>
+          <h3 class='card-header' style='padding:2.5% 0 2.5% 0; text-shadow: 0 2px rgb(200, 70, 70)'>EDIT TASK</h3>
+          <br>
+          <h5 class="card-title">Edit the following task here</h5>
+          <div class="card-body" style='padding:0 20%'>
+            {{ form.title(class="form-control") }}
+          </div>
+          <div class="card-body">
+            {{ form.submit(class="btn btn-success") }}
+            <a href="{{ url_for('home') }}" class="btn btn-primary">Cancel</a>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
 {% endblock %}

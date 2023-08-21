@@ -2,7 +2,7 @@ from app import app,db
 from flask import render_template,redirect,url_for,flash,get_flashed_messages
 from forms import *
 from models import Task
-from datetime import date
+from datetime import datetime
 
 @app.route('/',endpoint='home')
 def home():
@@ -14,7 +14,7 @@ def add():
     form = Addtask()
     if form.validate_on_submit():
         print('Submitted:',form.title.data)
-        t1=Task(title=form.title.data,date=date.today())
+        t1=Task(title=form.title.data,date=datetime.now())
         db.session.add(t1)
         db.session.commit()
         flash('Task added successfully')
@@ -28,7 +28,7 @@ def edit(task_id):
     if task:
         if form.validate_on_submit():
             task.title = form.title.data
-            task.date = date.today()
+            task.date = datetime.now()
             db.session.commit()
             flash('Task edited successfully')
             return redirect(url_for('home'))

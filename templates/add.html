@@ -1,19 +1,24 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="container-fluid" style='text-align:center'>
-  <form action="{{ url_for('add') }}" method="post">
-    {{ form.hidden_tag() }}
-    <div class="card" style='border:2px solid black;'>
-      <h3 class='card-title' style='padding:1.5% 0 0 0'>Add Task</h3>
-      <br>
-      <div class="card-body" style='padding:0 20%'>
-        {{ form.title(class="form-control") }}
-      </div>
-      <div class="card-body">
-        {{ form.submit(class="btn btn-primary") }}
-      </div>
+<div class="container">
+  <div class="row" style='padding:0 10%'>
+    <div class="col-md-12">
+      <form action="{{ url_for('add') }}" method="post">
+        {{ form.hidden_tag() }}
+        <div class="card" style='border:2px solid black; text-align:center'>
+          <h3 class='card-header' style='padding:2.5% 0 2.5% 0; text-shadow: 0 2px rgb(200, 70, 70)'>ADD TASK</h3>
+          <br>
+          <h5 class="card-title">Add a new task here</h5>
+          <div class="card-body" style='padding:0 20%'>
+            {{ form.title(class="form-control") }}
+          </div>
+          <div class="card-body">
+            {{ form.submit(class="btn btn-primary") }}
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
 {% endblock %}
