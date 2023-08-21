@@ -52,3 +52,9 @@ def delete(task_id):
     else:
         flash("Task not found")
     return redirect('home')
+
+@app.errorhandler(404)
+def not_found(e):
+    flash('Page not found: Redirected to home page')
+    tasks = Task.query.order_by(Task.date.asc()).all()
+    return redirect(url_for('home'))
